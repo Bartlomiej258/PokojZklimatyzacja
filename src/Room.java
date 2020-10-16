@@ -1,10 +1,12 @@
-public class Room<isAirConditioning> {
-    double squareMeter;
-    double temperature;
-    boolean airConditioning;
-    double limitTemperature;
+public class Room {
+
+    private double squareMeter;
+    private double temperature;
+    private boolean airConditioning;
+    private double limitTemperature;
 
     public Room(double temperature, boolean airConditioning, double limitTemperature) {
+        this.squareMeter = squareMeter;
         this.temperature = temperature;
         this.airConditioning = airConditioning;
         this.limitTemperature = limitTemperature;
@@ -34,19 +36,36 @@ public class Room<isAirConditioning> {
         this.airConditioning = airConditioning;
     }
 
+    public double getLimitTemperature() {
+        return limitTemperature;
+    }
+
+    public void setLimitTemperature(double limitTemperature) {
+        this.limitTemperature = limitTemperature;
+    }
+
     boolean decreaseTemperature() {
-        if ((temperature >= limitTemperature) && airConditioning){
+        if ((getTemperature() >= getLimitTemperature()) && airConditioning) {
             return true;
         }
         return false;
     }
-    boolean hasAirConditioning(){
-        if (airConditioning){
+
+    boolean hasAirConditioning() {
+        if (airConditioning) {
             return decreaseTemperature();
         }
         return false;
     }
 
-
-
+    public double coolingRoom(double getSquareMeter) {
+        if (getSquareMeter <= 30) {
+            return getTemperature() - 6;
+        } else if (getSquareMeter <= 50) {
+            return getTemperature() - 3;
+        } else if (getSquareMeter > 50) {
+            return getTemperature() - 1;
+        }
+        return 0;
+    }
 }
