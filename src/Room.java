@@ -35,7 +35,7 @@ public class Room<isAirConditioning> {
     }
 
     boolean decreaseTemperature() {
-        if (temperature >= limitTemperature && airConditioning){
+        if ((temperature >= limitTemperature) && airConditioning){
             return true;
         }
         return false;
@@ -46,11 +46,6 @@ public class Room<isAirConditioning> {
         }
         return false;
     }
-
-    double decreaseTemperature(double temperature){
-        return temperature -1;
-    }
-
 
 
 
